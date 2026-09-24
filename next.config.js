@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['three'],
-  swcMinify: true,
   output: 'standalone', // より効率的なビルド出力
   webpack: (config) => {
     // GLBファイルを処理するためのローダーを追加

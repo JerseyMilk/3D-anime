@@ -519,18 +519,18 @@ const CreditsModal: React.FC<CreditsModalProps> = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-      <div className="relative bg-gray-900 p-8 rounded-lg max-w-2xl w-full mx-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+      <div className="relative w-full max-w-2xl rounded-lg bg-gray-900 p-6 sm:p-8">
         <button
           onClick={onClose}
-          className="absolute -top-10 right-0 text-white text-2xl hover:text-red-500"
+          className="absolute -top-10 right-0 text-2xl text-white hover:text-red-500"
         >
           ✕
         </button>
-        <h2 className="text-2xl font-bold mb-4 text-white">Credits</h2>
-        <div className="text-gray-300 space-y-4">
+        <h2 className="mb-4 text-2xl font-bold text-white">クレジット</h2>
+        <div className="space-y-4 text-gray-300">
           <div>
-            <h3 className="text-xl font-semibold mb-2">Dance Motion</h3>
+            <h3 className="mb-2 text-xl font-semibold">ダンスモーション</h3>
             <p>三桜じゅり【じゅりんぐる】</p>
             <a
               href="https://www.youtube.com/shorts/gYZzVHGrRcA"
@@ -538,31 +538,31 @@ const CreditsModal: React.FC<CreditsModalProps> = ({ isVisible, onClose }) => {
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300"
             >
-              Dance Reference Video
+              参考動画
             </a>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-2">Music</h3>
-            <p>YOASOBI「アイドル」 Official Music</p>
+            <h3 className="mb-2 text-xl font-semibold">音楽</h3>
+            <p>YOASOBI「アイドル」Official Music</p>
             <a
               href="https://www.youtube.com/watch?v=ZRtdQ81jPUQ"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300"
             >
-              YouTube Video
+              YouTubeで見る
             </a>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-2">Anime Character</h3>
-            <p>Created using VRoid Studio</p>
+            <h3 className="mb-2 text-xl font-semibold">アニメキャラクター</h3>
+            <p>VRoid Studioで作成</p>
             <a
               href="https://vroid.com/en/studio"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300"
             >
-              VRoid Studio Website
+              VRoid Studio
             </a>
           </div>
         </div>
@@ -585,10 +585,10 @@ const Controls: React.FC<ControlsProps> = ({
 }) => {
   const [showCredits, setShowCredits] = useState(false);
 
-  // Common button class
   const buttonClass = `
-    px-5 py-2.5
+    px-3.5 py-2.5 sm:px-5
     rounded-lg
+    text-sm sm:text-base
     font-medium
     text-white
     shadow-lg
@@ -610,57 +610,59 @@ const Controls: React.FC<ControlsProps> = ({
 
   return (
     <>
-      <div className="absolute bottom-5 left-5 bg-black/70 p-4 rounded-lg text-white backdrop-blur-md shadow-lg z-10 flex flex-wrap gap-3 md:flex-row">
-        <button
-          onClick={onIntergalactiaDance}
-          disabled={!isModelLoaded}
-          className={`${buttonClass} bg-green-600 hover:bg-green-700 focus:ring-green-500`}
-        >
-          Dance Motion
-        </button>
-
-        <button
-          onClick={handleReset}
-          className={`${buttonClass} bg-gray-600 hover:bg-gray-700 focus:ring-gray-500`}
-        >
-          Reset
-        </button>
-
-        <button
-          onClick={handleGithub}
-          className={`${buttonClass} bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 flex items-center justify-center gap-2`}
-        >
-          <svg
-            className="w-5 h-5"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+      <div className="absolute bottom-3 left-3 right-3 z-10 rounded-xl border border-white/10 bg-black/70 p-3 text-white shadow-lg backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-auto sm:p-4">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:justify-start">
+          <button
+            onClick={onIntergalactiaDance}
+            disabled={!isModelLoaded}
+            className={`${buttonClass} bg-green-600 hover:bg-green-700 focus:ring-green-500`}
           >
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.12.83-.26.83-.57v-2c-3.34.73-4.03-1.6-4.03-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.84 2.8 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.3.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.64 1.66.24 2.88.12 3.18.76.84 1.23 1.9 1.23 3.22 0 4.6-2.8 5.63-5.48 5.92.42.36.8 1.1.8 2.2v3.3c0 .3.2.7.82.57C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-          GitHub
-        </button>
+            ダンス再生
+          </button>
 
-        <button
-          onClick={() => setShowCredits(true)}
-          className={`${buttonClass} bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 flex items-center justify-center gap-2`}
-        >
-          <svg
-            className="w-5 h-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+          <button
+            onClick={handleReset}
+            className={`${buttonClass} bg-gray-600 hover:bg-gray-700 focus:ring-gray-500`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          Credits
-        </button>
+            リセット
+          </button>
+
+          <button
+            onClick={handleGithub}
+            className={`${buttonClass} bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 flex items-center justify-center gap-2`}
+          >
+            <svg
+              className="h-4 w-4 sm:h-5 sm:w-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.12.83-.26.83-.57v-2c-3.34.73-4.03-1.6-4.03-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.84 2.8 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.3.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.64 1.66.24 2.88.12 3.18.76.84 1.23 1.9 1.23 3.22 0 4.6-2.8 5.63-5.48 5.92.42.36.8 1.1.8 2.2v3.3c0 .3.2.7.82.57C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub
+          </button>
+
+          <button
+            onClick={() => setShowCredits(true)}
+            className={`${buttonClass} bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 flex items-center justify-center gap-2`}
+          >
+            <svg
+              className="h-4 w-4 sm:h-5 sm:w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            クレジット
+          </button>
+        </div>
       </div>
 
       <CreditsModal
@@ -681,29 +683,84 @@ const ErrorNotice: React.FC<ErrorNoticeProps> = ({ isVisible, message }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="absolute top-16 left-5 right-5 bg-red-700/80 p-4 rounded-lg text-white text-sm leading-relaxed max-w-3xl z-10 animate-fade-in backdrop-blur-md shadow-lg">
-      <h3 className="mt-0 text-lg font-bold mb-2 text-pink-100">⚠️ An Error Occurred</h3>
+    <div className="absolute left-3 right-3 top-20 z-10 max-w-3xl rounded-lg bg-red-700/80 p-4 text-sm leading-relaxed text-white shadow-lg backdrop-blur-md sm:left-5 sm:right-5 sm:top-16">
+      <h3 className="mb-2 mt-0 text-lg font-bold text-pink-100">⚠️ エラーが発生しました</h3>
 
       {message ? (
         <p>{message}</p>
       ) : (
         <>
-          <p>The following GLB files are required to run this demo:</p>
-          <code className="bg-black/30 px-2 py-1 rounded font-mono inline-block m-1">{MODEL_PATHS.CHARACTER}</code>
-          <code className="bg-black/30 px-2 py-1 rounded font-mono inline-block m-1">{MODEL_PATHS.DANCE_MOTION}</code>
-          <p>Please place the GLB files in the correct location and refresh the page.</p>
+          <p>このデモを動かすには GLB ファイルが必要です。</p>
+          <code className="m-1 inline-block rounded bg-black/30 px-2 py-1 font-mono">{MODEL_PATHS.CHARACTER}</code>
+          <code className="m-1 inline-block rounded bg-black/30 px-2 py-1 font-mono">{MODEL_PATHS.DANCE_MOTION}</code>
+          <p>正しい場所にファイルを置いてページを再読み込みしてください。</p>
         </>
       )}
     </div>
   );
 };
 
+interface InstructionPanelProps {
+  isModelLoaded: boolean;
+  loadingStatus: string;
+  isMenuOpen: boolean;
+  onToggle: () => void;
+}
+
+const InstructionPanel: React.FC<InstructionPanelProps> = ({
+  isModelLoaded,
+  loadingStatus,
+  isMenuOpen,
+  onToggle,
+}) => (
+  <div className="pointer-events-none fixed left-3 top-3 z-[999] w-[min(84vw,18rem)] sm:left-4 sm:top-4">
+    <div className="pointer-events-auto overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-md">
+      <div className="flex items-center justify-between gap-3 px-3 py-2 sm:px-4 sm:py-3">
+        <div className="min-w-0">
+          <p className="text-[9px] uppercase tracking-[0.22em] text-cyan-300">Menu</p>
+          <h1 className="mt-1 truncate text-lg font-bold sm:text-xl">3D Anime</h1>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span
+            className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-semibold ${
+              isModelLoaded ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'
+            }`}
+          >
+            {isModelLoaded ? 'OK' : loadingStatus || '読込中'}
+          </span>
+
+          <button
+            type="button"
+            onClick={onToggle}
+            className="shrink-0 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-slate-100 transition hover:bg-white/10"
+          >
+            {isMenuOpen ? '閉じる' : 'メニュー'}
+          </button>
+        </div>
+      </div>
+
+      {isMenuOpen && (
+        <div className="border-t border-white/10 px-3 py-3 sm:px-4">
+          <ul className="space-y-2 text-xs leading-relaxed text-slate-200 sm:text-sm">
+            <li>• ドラッグでキャラを回転</li>
+            <li>• スクロールで拡大・縮小</li>
+            <li>• 「ダンス再生」でアニメ開始</li>
+            <li>• 「リセット」で再読み込み</li>
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+);
+
 // Main Home component
 const Home = () => {
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [loadingStatus, setLoadingStatus] = useState('Loading...');
+  const [loadingStatus, setLoadingStatus] = useState('読込中...');
   const [showVideo, setShowVideo] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const threeSceneRef = useRef<ThreeSceneHandle>(null);
   const loadStartTime = useRef<number>(Date.now());
   const isFirstLoad = useRef<boolean>(true);
@@ -772,10 +829,10 @@ const Home = () => {
 
     if (error) {
       setErrorMessage(error.includes("Not Found") ?
-        "Model files not found. Please place GLB files in '/public/3d/'." :
+        "GLB ファイルが見つかりません。'/public/3d/' にモデルを置いてください。" :
         error
       );
-      setLoadingStatus('Model loading error');
+      setLoadingStatus('モデル読込エラー');
     } else {
       const loadTime = Date.now() - loadStartTime.current;
       console.log(`Model load completion time: ${loadTime}ms`);
@@ -791,7 +848,7 @@ const Home = () => {
 
     const loadingTimer = setTimeout(() => {
       if (!isModelLoaded && !errorMessage) {
-        setLoadingStatus('Loading...(please wait)');
+        setLoadingStatus('読み込み中...少々お待ちください');
       }
     }, 3000);
 
@@ -832,6 +889,13 @@ const Home = () => {
       <ErrorNotice
         isVisible={!!errorMessage}
         message={errorMessage}
+      />
+
+      <InstructionPanel
+        isModelLoaded={isModelLoaded}
+        loadingStatus={loadingStatus}
+        isMenuOpen={isMenuOpen}
+        onToggle={() => setIsMenuOpen((prev) => !prev)}
       />
 
       <Controls
